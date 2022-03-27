@@ -74,10 +74,12 @@ system("termux-open-url  https://www.youtube.com/c/iewil");
 
 bn();
 cookie:
-$user_agent=Save('User_Agent');
-$cookie=Save('Cookie');
-$em=Save('Email/wallet faucetpay');
-
+//$user_agent=Save('User_Agent');
+//$cookie=Save('Cookie');
+//$em=Save('Email/wallet faucetpay');
+$em = "purna.iera@gmail.com";
+$user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36";
+$cookie="csrf_cookie_name=1da402ade2ae90264e0faf9df9874b5e; ci_session=51ff825f5611cd46a35c490bf865dd77466c9fcc";
 bn();
 $ua[]="cookie: ".$cookie;
 $ua[]="user-agent: ".$user_agent;
@@ -107,18 +109,24 @@ while(true){
 	$token = explode('">',explode('<input type="hidden" name="token" value="',$r)[1])[0];
 
 	$data = "token=".$token;
+	$bal1 = dash($ua)["bal"];
+	
 	$r2 = Run('https://'.host.'/auto/verify',$ua,$data);
 	$ss = explode(' token',explode("Swal.fire('Good job!', '",$r2)[1])[0];
 	$wr = explode("</div>",explode('<i class="fas fa-exclamation-circle"></i> ',$r2)[1])[0];
-	if($ss){
-		echo h."Success    ~> ".k.sprintf('%.8f',floatval($ss))." token".n;
+	$bc = explode(' token',explode('<b id="second">0</b> to get ',$r2)[1])[0];
+	if(dash($ua)["bal"] > $bal1){
+		if($ss){
+			echo h."Success    ~> ".k.sprintf('%.8f',floatval($ss))." token".n;
+		}else{
+			echo h."Success    ~> ".k.sprintf('%.8f',floatval($bc))." token".n;
+		}
+		echo h."Balance    ~> ".k.dash($ua)["bal"].n;
 	}
 	if($wr){
 		echo m."Error      ~> ".k.$wr.n;
 	}
-	echo h."Balance    ~> ".k.dash($ua)["bal"].n;
 	print line();
-	sleep(5);
 }
 wd:
 $r1 = Run('https://'.host.'/dashboard',$ua);

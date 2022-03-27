@@ -74,12 +74,10 @@ system("termux-open-url  https://www.youtube.com/c/iewil");
 
 bn();
 cookie:
-//$user_agent=Save('User_Agent');
-//$cookie=Save('Cookie');
-//$em=Save('Email/wallet faucetpay');
-$em = "purna.iera@gmail.com";
-$user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36";
-$cookie="csrf_cookie_name=1da402ade2ae90264e0faf9df9874b5e; ci_session=51ff825f5611cd46a35c490bf865dd77466c9fcc";
+$user_agent=Save('User_Agent');
+$cookie=Save('Cookie');
+$em=Save('Email/wallet faucetpay');
+
 bn();
 $ua[]="cookie: ".$cookie;
 $ua[]="user-agent: ".$user_agent;

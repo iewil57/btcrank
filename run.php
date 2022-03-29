@@ -70,7 +70,7 @@ function dash($ua){
 	return ["user"=>$u,"bal"=>$b];
 }
 
-system("termux-open-url  https://www.youtube.com/c/iewil");
+system("termux-open-url https://youtu.be/fglboCNSxWc");
 
 bn();
 cookie:

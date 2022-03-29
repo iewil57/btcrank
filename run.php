@@ -76,7 +76,7 @@ bn();
 cookie:
 $user_agent=Save('User_Agent');
 $cookie=Save('Cookie');
-$em=Save('Email/wallet faucetpay');
+$em=Save('Email/wallet_faucetpay');
 
 bn();
 $ua[]="cookie: ".$cookie;
